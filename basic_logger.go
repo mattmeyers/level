@@ -35,42 +35,42 @@ func NewBasicLogger(level Level, out io.Writer) (*BasicLogger, error) {
 	}, nil
 }
 
-// Logs at the LevelDebug level.
+// Logs at the Debug level.
 func (l *BasicLogger) Debug(format string, args ...interface{}) {
-	if l.level <= LevelDebug {
-		l.printPrefixTag(LevelDebug)
+	if l.level <= Debug {
+		l.printPrefixTag(Debug)
 		l.printMessage([]byte(fmt.Sprintf(format, args...)))
 	}
 }
 
-// Logs at the LevelInfo level.
+// Logs at the Info level.
 func (l *BasicLogger) Info(format string, args ...interface{}) {
-	if l.level <= LevelInfo {
-		l.printPrefixTag(LevelInfo)
+	if l.level <= Info {
+		l.printPrefixTag(Info)
 		l.printMessage([]byte(fmt.Sprintf(format, args...)))
 	}
 }
 
-// Logs at the LevelWarn level.
+// Logs at the Warn level.
 func (l *BasicLogger) Warn(format string, args ...interface{}) {
-	if l.level <= LevelWarn {
-		l.printPrefixTag(LevelWarn)
+	if l.level <= Warn {
+		l.printPrefixTag(Warn)
 		l.printMessage([]byte(fmt.Sprintf(format, args...)))
 	}
 }
 
-// Logs at the LevelError level.
+// Logs at the Error level.
 func (l *BasicLogger) Error(format string, args ...interface{}) {
-	if l.level <= LevelError {
-		l.printPrefixTag(LevelError)
+	if l.level <= Error {
+		l.printPrefixTag(Error)
 		l.printMessage([]byte(fmt.Sprintf(format, args...)))
 	}
 }
 
-// Logs at the LevelFatal level then calls os.Exit(1).
+// Logs at the Fatal level then calls os.Exit(1).
 func (l *BasicLogger) Fatal(format string, args ...interface{}) {
-	if l.level <= LevelFatal {
-		l.printPrefixTag(LevelFatal)
+	if l.level <= Fatal {
+		l.printPrefixTag(Fatal)
 		l.printMessage([]byte(fmt.Sprintf(format, args...)))
 		os.Exit(1)
 	}

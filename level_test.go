@@ -14,27 +14,27 @@ func TestLevel_validate(t *testing.T) {
 	}{
 		{
 			name:    "Valid - Debug",
-			l:       LevelDebug,
+			l:       Debug,
 			wantErr: false,
 		},
 		{
 			name:    "Valid - Info",
-			l:       LevelInfo,
+			l:       Info,
 			wantErr: false,
 		},
 		{
 			name:    "Valid - Warn",
-			l:       LevelWarn,
+			l:       Warn,
 			wantErr: false,
 		},
 		{
 			name:    "Valid - Error",
-			l:       LevelError,
+			l:       Error,
 			wantErr: false,
 		},
 		{
 			name:    "Valid - Fatal",
-			l:       LevelFatal,
+			l:       Fatal,
 			wantErr: false,
 		},
 		{
@@ -61,31 +61,31 @@ func TestParseLevel(t *testing.T) {
 		{
 			name:    "Parse debug",
 			l:       "DEBUG",
-			want:    LevelDebug,
+			want:    Debug,
 			wantErr: false,
 		},
 		{
 			name:    "Parse info",
 			l:       "info",
-			want:    LevelInfo,
+			want:    Info,
 			wantErr: false,
 		},
 		{
 			name:    "Parse warn",
 			l:       "warn",
-			want:    LevelWarn,
+			want:    Warn,
 			wantErr: false,
 		},
 		{
 			name:    "Parse error",
 			l:       "error",
-			want:    LevelError,
+			want:    Error,
 			wantErr: false,
 		},
 		{
 			name:    "Parse fatal",
 			l:       "fatal",
-			want:    LevelFatal,
+			want:    Fatal,
 			wantErr: false,
 		},
 		{

@@ -10,15 +10,15 @@ import (
 // message using fmt.Printf with a timestamp and level prefix. Fatal logs the message
 // like the other methods, but calls os.Exit(1) afterwards.
 type Logger interface {
-	// Logs at the LevelDebug level.
+	// Logs at the Debug level.
 	Debug(format string, args ...interface{})
-	// Logs at the LevelInfo level.
+	// Logs at the Info level.
 	Info(format string, args ...interface{})
-	// Logs at the LevelWarn level.
+	// Logs at the Warn level.
 	Warn(format string, args ...interface{})
-	// Logs at the LevelError level.
+	// Logs at the Error level.
 	Error(format string, args ...interface{})
-	// Logs at the LevelFatal level then calls os.Exit(1).
+	// Logs at the Fatal level then calls os.Exit(1).
 	Fatal(format string, args ...interface{})
 }
 
@@ -28,24 +28,24 @@ type Level int
 
 // The available logging levels.
 const (
-	LevelDebug Level = iota
-	LevelInfo
-	LevelWarn
-	LevelError
-	LevelFatal
+	Debug Level = iota
+	Info
+	Warn
+	Error
+	Fatal
 )
 
 func (l Level) String() string {
 	switch l {
-	case LevelDebug:
+	case Debug:
 		return "DEBUG"
-	case LevelInfo:
+	case Info:
 		return "INFO"
-	case LevelWarn:
+	case Warn:
 		return "WARN"
-	case LevelError:
+	case Error:
 		return "ERROR"
-	case LevelFatal:
+	case Fatal:
 		return "FATAL"
 	}
 
@@ -57,15 +57,15 @@ func (l Level) String() string {
 func ParseLevel(l string) (Level, error) {
 	switch strings.ToLower(l) {
 	case "debug":
-		return LevelDebug, nil
+		return Debug, nil
 	case "info":
-		return LevelInfo, nil
+		return Info, nil
 	case "warn":
-		return LevelWarn, nil
+		return Warn, nil
 	case "error":
-		return LevelError, nil
+		return Error, nil
 	case "fatal":
-		return LevelFatal, nil
+		return Fatal, nil
 	}
 
 	return Level(-1), errors.New("invalid log level")

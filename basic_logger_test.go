@@ -25,7 +25,7 @@ func TestNewBasicLoggerValidatesLevel(t *testing.T) {
 	}{
 		{
 			name:    "Valid level",
-			level:   LevelDebug,
+			level:   Debug,
 			wantErr: false,
 		},
 		{
@@ -43,7 +43,7 @@ func TestNewBasicLoggerValidatesLevel(t *testing.T) {
 }
 
 func TestNewBasicLoggerDefaultsToStdout(t *testing.T) {
-	l, err := NewBasicLogger(LevelDebug, nil)
+	l, err := NewBasicLogger(Debug, nil)
 	assert.NoError(assert.Fatal(t), err)
 	assert.DeepEqual(t, l.w, os.Stdout)
 }
@@ -63,20 +63,20 @@ func TestBasicLogger_Debug(t *testing.T) {
 		wantWrites int
 	}{
 		{
-			name:       "Logs when LevelDebug - no newline",
-			fields:     fields{level: LevelDebug},
+			name:       "Logs when Debug - no newline",
+			fields:     fields{level: Debug},
 			args:       args{format: "%s", args: []interface{}{"foo"}},
 			wantWrites: 3,
 		},
 		{
-			name:       "Logs when LevelDebug - newline",
-			fields:     fields{level: LevelDebug},
+			name:       "Logs when Debug - newline",
+			fields:     fields{level: Debug},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 2,
 		},
 		{
 			name:       "Does not log when higher level",
-			fields:     fields{level: LevelInfo},
+			fields:     fields{level: Info},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 0,
 		},
@@ -110,26 +110,26 @@ func TestBasicLogger_Info(t *testing.T) {
 		wantWrites int
 	}{
 		{
-			name:       "Logs when LevelInfo - no newline",
-			fields:     fields{level: LevelInfo},
+			name:       "Logs when Info - no newline",
+			fields:     fields{level: Info},
 			args:       args{format: "%s", args: []interface{}{"foo"}},
 			wantWrites: 3,
 		},
 		{
-			name:       "Logs when LevelInfo - newline",
-			fields:     fields{level: LevelInfo},
+			name:       "Logs when Info - newline",
+			fields:     fields{level: Info},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 2,
 		},
 		{
 			name:       "Logs when lower level",
-			fields:     fields{level: LevelDebug},
+			fields:     fields{level: Debug},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 2,
 		},
 		{
 			name:       "Does not log when higher level",
-			fields:     fields{level: LevelFatal},
+			fields:     fields{level: Fatal},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 0,
 		},
@@ -163,26 +163,26 @@ func TestBasicLogger_Warn(t *testing.T) {
 		wantWrites int
 	}{
 		{
-			name:       "Logs when LevelWarn - no newline",
-			fields:     fields{level: LevelWarn},
+			name:       "Logs when Warn - no newline",
+			fields:     fields{level: Warn},
 			args:       args{format: "%s", args: []interface{}{"foo"}},
 			wantWrites: 3,
 		},
 		{
-			name:       "Logs when LevelWarn - newline",
-			fields:     fields{level: LevelWarn},
+			name:       "Logs when Warn - newline",
+			fields:     fields{level: Warn},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 2,
 		},
 		{
 			name:       "Logs when lower level",
-			fields:     fields{level: LevelDebug},
+			fields:     fields{level: Debug},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 2,
 		},
 		{
 			name:       "Does not log when higher level",
-			fields:     fields{level: LevelFatal},
+			fields:     fields{level: Fatal},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 0,
 		},
@@ -216,26 +216,26 @@ func TestBasicLogger_Error(t *testing.T) {
 		wantWrites int
 	}{
 		{
-			name:       "Logs when LevelError - no newline",
-			fields:     fields{level: LevelError},
+			name:       "Logs when Error - no newline",
+			fields:     fields{level: Error},
 			args:       args{format: "%s", args: []interface{}{"foo"}},
 			wantWrites: 3,
 		},
 		{
-			name:       "Logs when LevelError - newline",
-			fields:     fields{level: LevelError},
+			name:       "Logs when Error - newline",
+			fields:     fields{level: Error},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 2,
 		},
 		{
 			name:       "Logs when lower level",
-			fields:     fields{level: LevelDebug},
+			fields:     fields{level: Debug},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 2,
 		},
 		{
 			name:       "Does not log when higher level",
-			fields:     fields{level: LevelFatal},
+			fields:     fields{level: Fatal},
 			args:       args{format: "%s\n", args: []interface{}{"foo"}},
 			wantWrites: 0,
 		},
@@ -258,7 +258,7 @@ func TestBasicLogger_Fatal(t *testing.T) {
 	if os.Getenv("TESTLEVELLOGGER_FATAL") == "1" {
 		(&BasicLogger{
 			w:     &mockWriter{calls: make([][]byte, 0)},
-			level: LevelFatal,
+			level: Fatal,
 		}).Fatal("")
 		return
 	}
