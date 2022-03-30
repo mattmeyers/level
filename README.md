@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/mattmeyers/level/actions/workflows/build.yml/badge.svg)
 
-`level` is an opinionated, no-frills level logger library. It is intended to be simple and quick to use, but not guarenteed to be enough for large projects.
+`level` is an opinionated, no-frills level logger library. It is intended to be simple and quick to use, but not guaranteed to be enough for large projects.
 
 ## Installing
 
