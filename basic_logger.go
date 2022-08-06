@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+var _ Logger = (*BasicLogger)(nil)
+
 // BasicLogger implements the Logger interface using the defined Level constants. The provided
 // level is treated as the minimum. Any messages passed to a level that is at least the defined
 // level will be printed.
