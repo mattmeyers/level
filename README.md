@@ -1,6 +1,7 @@
 # level
 
 ![Build](https://github.com/mattmeyers/level/actions/workflows/build.yml/badge.svg)
+[![Go Reference](https://pkg.go.dev/badge/github.com/mattmeyers/level.svg)](https://pkg.go.dev/github.com/mattmeyers/level)
 
 `level` is an opinionated, no-frills level logger library. It is intended to be simple and quick to use, but not guaranteed to be enough for large projects.
 
