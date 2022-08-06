@@ -38,7 +38,12 @@ const (
 )
 ```
 
-This library provides one implementation of the interface: the `BasicLogger`. This implementation logs messages to the provided writer. For example:
+This library provides two implementations of the interface:
+
+1. `BasicLogger`
+1. `NullLogger`
+
+The `BasicLogger` implementation logs messages to the provided writer. For example:
 
 ```go
 // In main.go
@@ -77,3 +82,5 @@ Running this will produce
 $ go run main.go
 2022-03-29T23:17:18-04:00 [INFO]: Got some value: 1
 ```
+
+The `NullLogger` is an implementation that does nothing. All log statements will be thrown away. Note that calling `Fatal` will still cause the process to exit though.
